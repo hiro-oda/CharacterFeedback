@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>キャラクターフィードバック</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>キャラクターフィードバック</h1>
+      <p class="subtitle">登場人物の視点からシナリオをリアルタイムレビュー</p>
+    </div>
+  </header>
+
+  <main>
+    <aside class="panel panel-left">
+      <div class="panel-header">
+        <span class="panel-icon">🎭</span>
+        <h2>キャラクター設定</h2>
+      </div>
+      <p class="panel-desc">フィードバックを行うキャラクターの設定を入力してください。名前・性格・価値観・口調など、詳細に書くほど精度が上がります。</p>
+      <textarea
+        id="character-input"
+        class="textarea"
+        placeholder="例：&#10;名前：山田花子&#10;年齢：28歳&#10;性格：強いフェミニストで正義感が強い。不平等に対して声を上げることを厭わない。&#10;口調：穏やかだが、信念に関わることは毅然とした態度で語る。&#10;価値観：性別に関わらず人は対等に扱われるべきだと強く信じている。"
+        rows="16"
+      ></textarea>
+      <div class="char-counter">
+        <span id="char-count">0</span> 文字
+      </div>
+    </aside>
+
+    <section class="panel panel-center">
+      <div class="panel-header">
+        <span class="panel-icon">✍️</span>
+        <h2>シナリオエディタ</h2>
+        <div class="status-badge" id="status-badge">待機中</div>
+      </div>
+      <p class="panel-desc">シナリオを入力すると、入力が止まってから自動でフィードバックが生成されます。</p>
+      <textarea
+        id="scenario-input"
+        class="textarea"
+        placeholder="ここにシナリオを書いてください…&#10;&#10;例：&#10;太郎「女の子なんだから、もっとおとなしくしてれば良いのに」&#10;花子「……」&#10;太郎「男の仕事に口出しするなよ」"
+        rows="22"
+      ></textarea>
+      <div class="editor-footer">
+        <span id="scenario-char-count">0</span> 文字
+        <span class="debounce-hint">入力停止から <strong>2秒後</strong> に自動フィードバック</span>
+      </div>
+    </section>
+
+    <aside class="panel panel-right">
+      <div class="panel-header">
+        <span class="panel-icon">💬</span>
+        <h2>キャラクターの声</h2>
+      </div>
+      <div id="feedback-area" class="feedback-area">
+        <div class="feedback-placeholder">
+          <div class="placeholder-icon">💭</div>
+          <p>キャラクター設定とシナリオを入力すると、<br />キャラクターからのフィードバックがここに表示されます。</p>
+        </div>
+      </div>
+      <div class="feedback-footer" id="feedback-footer"></div>
+    </aside>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
